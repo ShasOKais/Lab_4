@@ -13,6 +13,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    MyVector.h \
     mainwindow.h
 
 FORMS += \
