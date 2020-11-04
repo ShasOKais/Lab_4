@@ -23,14 +23,28 @@ void MainWindow::mousePressEvent(QMouseEvent *e)
         int X = stor[i]->getx();
         int Y = stor[i]->gety();
         int R = stor[i]->getR();
-        //int len  = sqrt((X-x)*(X-x) + (Y-y)*(Y-y));
+        int len  = sqrt((X - x)*(X - x) + (Y - y)*(Y - y));
+        if(len <= stor[i]->getR()){
+            CAllocate *tmp = new CAllocate(stor[i]);
+            stor[i] = tmp;
+            f = 1;
+            break;
+        }
     }
     if(!f)stor.push_back(new CCircle(e->x(), e->y()));
     repaint();
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *d)
+{
+    if(d->key() == Qt::Key_Delete){
+
+        update();
+    }
+}
+
 void MainWindow::paintEvent(QPaintEvent *){
-    for( int i(0); i<stor.size(); i++){
-            stor[i]->draw(this);
+    for( int i(0); i < stor.size(); i++){
+        stor[i]->draw(this);
     }
 }
