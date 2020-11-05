@@ -93,6 +93,20 @@ public:
         end_ = &a[Size];
         end_++;
     }
+    void Delete(int position) {
+        try {
+            if (position < 0 || position >= Size) throw(1);
+        }
+        catch (int i) {
+            cout << "Выход за границы";
+        }
+        for (int i = position + 1, j = position; i < this->Size; i++, j++) {
+            a[j] = a[i];
+        }
+        this->Size -= 1;
+        end_ = &a[Size];
+        end_++;
+    }
     void print() {
         try {
             for (int i(0); i < this->Size; i++) {
