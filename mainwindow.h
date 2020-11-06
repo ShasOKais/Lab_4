@@ -61,14 +61,14 @@ public:
     }
     virtual void draw(QWidget *parent){
         p = new QPainter(parent);
-        p->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::FlatCap));
+        p->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::FlatCap)); // черная ручка
         if(Alloc == false){
-            p->setBrush(QBrush(Qt::white, Qt::SolidPattern));
+            p->setBrush(QBrush(Qt::white, Qt::SolidPattern)); // круг с черной окантовкой и внутри белый
 
         } else {
-            p->setBrush(QBrush(Qt::blue, Qt::SolidPattern));
+            p->setBrush(QBrush(Qt::blue, Qt::SolidPattern)); // круг с черной окантовкой и синий
         }
-        p->drawEllipse(x - R, y - R, 2 * R, 2 * R);
+        p->drawEllipse(x - R, y - R, 2 * R, 2 * R); // нарисовать круг
     }
     virtual ~CCircle(){};
 };
@@ -88,14 +88,14 @@ private:
     Ui::MainWindow *ui;
     void paintEvent(QPaintEvent *);
 protected:
-    void mousePressEvent(QMouseEvent *e); // по нажатию мыши чето происходит
-    void keyPressEvent(QKeyEvent *d);
-    int FindStrike(QMouseEvent *e);
-    void addNewCircle(QMouseEvent *e);
-    void DeleteAllocs();
-    void ClearAllocs();
-    void ReverseAlloc(int pos);
-    void keyReleaseEvent(QKeyEvent *e);
+    void mousePressEvent(QMouseEvent *e); // по нажатию кнопки мыши срабатывает триггер
+    void keyPressEvent(QKeyEvent *d); // при нажатии клавиши срабатывает триггер
+    int FindStrike(QMouseEvent *e); // при попадании в круг возвращает позицию круга в хранилище
+    void addNewCircle(QMouseEvent *e); // функция добавления круга на форму
+    void DeleteAllocs(); // удаляет выделенные круги по нажатию клавиши
+    void ClearAllocs(); // очищает выделенные круги, преобразуя их в невыделенные
+    void ReverseAlloc(int pos); // принимает позицию круга и инвертирует выделение
+    void keyReleaseEvent(QKeyEvent *e); // при отжатии клавиши срабатывает триггер
 };
 
 #endif // MAINWINDOW_H
