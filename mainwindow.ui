@@ -14,8 +14,41 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCTRL">
+    <property name="title">
+     <string>Инструкция</string>
+    </property>
+    <addaction name="action"/>
+    <addaction name="actionCTRL"/>
+    <addaction name="actionDELETE"/>
+   </widget>
+   <addaction name="menuCTRL"/>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action">
+   <property name="text">
+    <string>ЛКМ - создать/выделить круг</string>
+   </property>
+  </action>
+  <action name="actionCTRL">
+   <property name="text">
+    <string>CTRL + ЛКМ - выделить неск. кругов</string>
+   </property>
+  </action>
+  <action name="actionDELETE">
+   <property name="text">
+    <string>DELETE - удалить выделенные круги</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
