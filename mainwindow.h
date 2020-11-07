@@ -27,44 +27,43 @@ public:
 
 class CCircle: public CShape{ // Создание круга
 private:
-    int x = 0;
-    int y = 0;
-    int R = 50;
-    bool Alloc = false;
-    QPainter *p = nullptr;
+    int x = 0; // позиция мыши по Х
+    int y = 0; // позиция мыши по У
+    int R = 50; // радиус круга
+    bool Alloc = false; // выделен круг или нет
+    QPainter *p = nullptr; // отрисовка круга
 public:
     CCircle () = default;
     CCircle (CCircle *x){
-        this->x = x->x;
-        this->y = x->y;
-        this->R = x->R;
-        this->p = x->p;
+        this->x = x->x; // получение координат мыши по х
+        this->y = x->y; // получение координат мыши по у
+        this->R = x->R; // получение радиуеса
+        this->p = x->p; // получение объекта
     }
     CCircle(int x, int y){
-        this->x = x;
-        this->y = y;
+        this->x = x; // исключение отклонений по Х
+        this->y = y; // исключение отклонений по У
     }
-    virtual int getx(){
+    virtual int getx(){ // возврат значения по Х
         return this->x;
     }
-    virtual int gety(){
+    virtual int gety(){ // возврат значения по У
         return this->y;
     }
-    virtual int getR(){
+    virtual int getR(){ // возврат значения по R
         return this->R;
     }
-    virtual bool getAlloc(){
+    virtual bool getAlloc(){ // получение статуса объекта (закрашен ли?)
         return this->Alloc;
     };
-    virtual void setAlloc(bool f){
+    virtual void setAlloc(bool f){ // установка статуса объекта
         this->Alloc = f;
     }
-    virtual void draw(QWidget *parent){
+    virtual void draw(QWidget *parent){ // метод отрисовки
         p = new QPainter(parent);
         p->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::FlatCap)); // черная ручка
         if(Alloc == false){
             p->setBrush(QBrush(Qt::white, Qt::SolidPattern)); // круг с черной окантовкой и внутри белый
-
         } else {
             p->setBrush(QBrush(Qt::blue, Qt::SolidPattern)); // круг с черной окантовкой и синий
         }
